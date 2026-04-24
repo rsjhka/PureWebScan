@@ -1,0 +1,49 @@
+# PureWebScan Configuration
+# Web Fingerprint Scanner compatible with Wappalyzer
+
+app:
+  name: "PureWebScan"
+  version: "1.0.0"
+  description: "Web Fingerprint Scanner compatible with Wappalyzer rules"
+
+server:
+  host: "0.0.0.0"
+  port: 9933
+  debug: false
+  reload: false
+
+database:
+  type: "sqlite"
+  url: "sqlite:///./data/purewebscan.db"
+
+scan:
+  max_concurrent: 100
+  timeout: 10
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0"
+  max_retries: 3
+  retry_delay: 1.0
+
+logging:
+  level: "INFO"
+  format: "[%(asctime)s] [%(levelname)s] [%(name)s] %(message)s"
+  file: "data/purewebscan.log"
+
+rules:
+  directory: "rules"
+  auto_reload: true
+
+cors:
+  origins:
+    - "*"
+  allow_credentials: true
+  allow_methods:
+    - "*"
+  allow_headers:
+    - "*"
+
+# Red Team Specific Configuration
+red_team:
+  stealth: true
+  delay: 2
+  proxy: null
+  verify_ssl: true
